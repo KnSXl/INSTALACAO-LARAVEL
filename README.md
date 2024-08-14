@@ -1,54 +1,89 @@
-Claro, aqui está uma versão mais compacta do README:
-
----
-
-# Guia Rápido de Configuração do Laravel
+# Guia de Instalação e Configuração do Laravel com Docker
 
 ## Requisitos
 
-- **XAMPP**: Inclui Apache, MySQL, e PHP.
-- **Composer**: Gerenciador de dependências PHP.
-- **Docker Desktop**: Ferramenta para containers Docker.
+Antes de começar, certifique-se de ter os seguintes softwares instalados:
 
-## Passos de Instalação
+- PHP
+- Composer
+- Docker Desktop
+- WSL2 (se estiver usando o Windows)
 
-1. **Instalar Laravel Installer**
+## Instalação
 
-   ```bash
-   composer global require laravel/installer
-   ```
+### Usando PowerShell
 
-2. **Criar um Novo Projeto Laravel**
+Abra o PowerShell e execute o seguinte comando:
 
-   ```bash
-   laravel new example-app
-   ```
+```bash
+bash curl -s https://laravel.build/example-app | bash
+```
 
-3. **Entrar no Diretório do Projeto**
+### Usando WSL2
 
-   ```bash
-   cd example-app
-   ```
+Abra o terminal WSL2 e execute o comando abaixo:
 
-4. **Instalar Laravel Sail**
+```bash
+curl -s https://laravel.build/example-app | bash
+```
 
-   ```bash
-   php artisan sail:install
-   ```
+> **Nota:** Substitua "example-app" pelo nome desejado do seu projeto, se preferir.
 
-5. **Subir os Containers Docker**
+### Navegar para o Diretório do Projeto
 
-   ```bash
-   bash ./vendor/bin/sail up
-   ```
+Após a instalação, entre no diretório do projeto com:
 
-Agora, sua aplicação Laravel deve estar rodando em `http://localhost`.
+```bash
+cd example-app
+```
 
-## Problemas Comuns
+### Iniciar os Contêineres
 
-- **Comando `laravel` não encontrado**: Verifique se o diretório global do Composer está no `PATH`.
-- **Erro ao iniciar o Sail**: Confirme que o Docker Desktop está em execução.
+Para iniciar os contêineres, execute:
 
----
+```bash
+./vendor/bin/sail up
+```
 
-Esse formato mais enxuto cobre os pontos principais de maneira direta e clara.
+Se preferir executar os contêineres em segundo plano (modo detach), use:
+
+```bash
+./vendor/bin/sail up -d
+```
+
+### Executar Migrations
+
+Para aplicar as migrations e criar as tabelas no banco de dados, execute:
+
+```bash
+./vendor/bin/sail artisan migrate
+```
+
+## Acessando o Laravel
+
+O Laravel será iniciado e estará acessível em:
+
+```
+http://localhost/
+```
+
+## Configuração Adicional
+
+Para acessar a interface do phpMyAdmin e gerenciar seu banco de dados, adicione a seguinte configuração ao seu arquivo `docker-compose.yml`:
+
+```yaml
+phpmyadmin:
+    image: 'phpmyadmin/phpmyadmin:latest'
+    restart: always
+    ports:
+        - '8080:80'
+    environment: 
+        PMA_HOST: ${DB_HOST}
+        PMA_PORT: ${DB_PORT}
+        PMA_USER: '${DB_USERNAME}'
+        PMA_PASSWORD: '${DB_PASSWORD}'
+    networks:
+        - sail
+```
+
+Com essas configurações, você poderá acessar o phpMyAdmin em http://localhost:8080/
