@@ -87,3 +87,83 @@ phpmyadmin:
 ```
 
 Com essas configurações, você poderá acessar o phpMyAdmin em http://localhost:8080/
+
+## Comandos Úteis
+
+Aqui estão alguns comandos úteis que você pode precisar:
+
+- **Iniciar os contêineres:**
+
+    ```bash
+    ./vendor/bin/sail up
+    ```
+
+- **Iniciar os contêineres em segundo plano (modo detach):**
+
+    ```bash
+    ./vendor/bin/sail up -d
+    ```
+
+- **Parar os contêineres:**
+
+    ```bash
+    ./vendor/bin/sail down
+    ```
+
+- **Parar os contêineres sem remover volumes:**
+
+    ```bash
+    ./vendor/bin/sail stop
+    ```
+
+- **Executar migrations:**
+
+    ```bash
+    ./vendor/bin/sail artisan migrate
+    ```
+
+## Configurando Alias (Opcional)
+
+Para simplificar o uso dos comandos `sail`, você pode adicionar um alias ao seu shell. Adicione o seguinte ao seu arquivo de configuração de shell (`~/.bashrc`, `~/.zshrc`, etc.):
+
+```bash
+alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
+```
+
+Após adicionar o alias, recarregue o arquivo de configuração com:
+
+```bash
+source ~/.bashrc  # ou source ~/.zshrc
+```
+
+Agora, você pode usar comandos simplificados como:
+
+- **Iniciar os contêineres:**
+
+    ```bash
+    sail up
+    ```
+
+- **Iniciar os contêineres em segundo plano:**
+
+    ```bash
+    sail up -d
+    ```
+
+- **Parar os contêineres:**
+
+    ```bash
+    sail down
+    ```
+
+- **Parar os contêineres sem remover volumes:**
+
+    ```bash
+    sail stop
+    ```
+
+- **Executar migrations:**
+
+    ```bash
+    sail artisan migrate
+    ```
