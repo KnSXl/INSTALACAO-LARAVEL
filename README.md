@@ -167,3 +167,7 @@ Agora, você pode usar comandos simplificados como:
     ```bash
     sail artisan migrate
     ```
+
+## Mais Informações
+
+Para mais informações e recursos adicionais sobre o [Laravel](https://laravel.com/), visite o site oficial: Laravel. Aqui você encontrará documentação detalhada, tutoriais e uma comunidade ativa para suporte.
