@@ -69,7 +69,7 @@ http://localhost/
 
 ## Configuração Adicional
 
-Para acessar a interface do phpMyAdmin e gerenciar seu banco de dados, adicione a seguinte configuração ao seu arquivo `docker-compose.yml`:
+Para acessar a interface do phpMyAdmin e gerenciar seu banco de dados, adicione a seguinte configuração ao seu arquivo `docker-compose.yml` ou instale o app: [TablePlus](https://tableplus.com/):
 
 ```yaml
 phpmyadmin:
