@@ -110,7 +110,7 @@ Aqui estão alguns comandos úteis que você pode precisar:
     ./vendor/bin/sail down
     ```
 
-- **Parar os contêineres sem remover volumes:**
+- **Parar os contêineres que estão em 2º plano:**
 
     ```bash
     ./vendor/bin/sail stop
@@ -156,7 +156,7 @@ Agora, você pode usar comandos simplificados como:
     sail down
     ```
 
-- **Parar os contêineres sem remover volumes:**
+- **Parar os contêineres que estão em 2º plano:**
 
     ```bash
     sail stop
