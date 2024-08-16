@@ -27,6 +27,16 @@ Abra o terminal WSL2 e execute o comando abaixo:
 curl -s https://laravel.build/example-app | bash
 ```
 
+### Escolhendo seus serviços de Sail
+
+Ao criar um novo aplicativo Laravel via Sail, você pode usar a ``with`` variável query string para escolher quais serviços devem ser configurados no ``docker-compose.yml``     arquivo do seu novo aplicativo. Os serviços disponíveis incluem ``mysql``, ``pgsql``, ``mariadb``, ``redis``, ``memcached``, ``meilisearch``, ``typesense``, ``minio``, ``selenium``, e ``mailpit``:
+
+```bash
+curl -s "https://laravel.build/example-app?with=mysql,redis" | bash
+```
+
+Se você não especificar quais serviços deseja configurar, uma pilha padrão de ``mysql``, ``redis``, ``meilisearch``, ``mailpit``, e ``selenium`` será configurada.
+
 > **Nota:** Substitua "example-app" pelo nome desejado do seu projeto, se preferir.
 
 ### Navegar para o Diretório do Projeto
